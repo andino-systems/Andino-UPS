@@ -1,7 +1,7 @@
 # Andino-UPS
 
 
-Andino UPS, a base Uninterruptable Power Supply for 24 Volt DC Client Devices.
+Andino UPS, a Uninterruptible Power Supply for 24 Volt DC Client Devices.
 It stores the Energy in long lasting Supercaps instead of Lead- or Lithium Batteries.
 Depending on the environment temperature, the livetime are up to 10 years without any maintance. 
 
@@ -48,6 +48,19 @@ In all cases, hopefully enough time to shut down the client PLC.
 
 ![Andino UPS - Backup times](backup-time.png)
 
+   
+
+## Shutdown - Power return and Bridge Mode
+
+If the Charge Level is above the "Good" Level (witch is default 80% and you can change) the Client will not informed of the Power Fail. If the Power returns within this time, the gap is bridged. 
+
+![State Machine up-down](states.png)
+
+If the Power returns after the Client is informed, the UPS will wait until the Charge Level is again above the good Level and give the Client time to Shut down (HYST-Timer).
+After that the Power of the Client will be shut down (DOWN Timer) and switched on again so that the client can restart. 
+
+![State Machine up-down-up again](states1.png)
+
 
 ## EMC Tests
 
@@ -84,3 +97,9 @@ The tested standards in detail
 
 ![Andino UPS - Wiring](block.png)
 
+
+
+   
+**[For more details please see here ](https://github.com/andino-systems/Andino-UPS/tree/master/src)**
+   
+**A Description of the internal charge and power controller [see here](http://www.analog.com/edia/en/technical-documentation/data-sheets/3350fc.pdf)** 
