@@ -34,6 +34,21 @@ The UPS can deliver up to 10 Watts or 0,4 Ampere at 24 Volts.
 ![Andino UPS - Wiring](wiring.png)
 
 
+## Backup times
+
+Depending on the Load the backup times are:
+
+| Load | Time 
+--- | --- | 
+2 Watt | 3 min 30 sec
+4 Watt | 1 min 12 sec
+10 Watt | 39 sec
+
+In all cases, hopefully enough time to shut down the client PLC.
+
+![Andino UPS - Backup times](backup-time.png)
+
+
 ## EMC Tests
 
 The Andino UPS has been extensively tested for its electromagnetic compatibility (EMC).

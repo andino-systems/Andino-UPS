@@ -48,14 +48,53 @@ Every command has to be terminated by CR or LF. Message ends with CR and LF.
 ### Commands to the UPS
 **Command** | Arguments | Action | Default | Example 
 --- | --- | --- | ---
-RESET | none | Restart the Controller ||  RESET
-INFO | none| Prints the current settings ||   INFO
-HELP | none| Prints the current settings ||  INFO
+RESET | none | Restart the Controller | - |  RESET
+INFO | none| Prints the current settings | - |   INFO
+HELP | none| Prints the current settings | - |  INFO
 TRCE | 0=no, 1=yes | Write Trace informations of the FSM to the UART |0|  TRCE 1
+REGS | none | Dumps the internal registers in JSON format | - |  REGS
 GOOD | 20..98 | Sets the Power good level in %  | 80 | GOOD 50
 HYST | 1..100 | Sets the Timer for the Shutdown of the Client | 5 | HYST 10
 DOWN | 1..100 | Sets the Timer for the Power off Client to Restart | 5 | DOWN 10
 
+
+### Register dump
+
+Send the Command REGS\r\n and the device will answer with a JSON Block
+
+	{
+	"chrg_sts": 0b0001010010100101,
+	"moni_sts": 0b0000001000000000,
+	"vc1": 2132,
+	"vc2": 2617,
+	"vc3": 2617,
+	"vc4": 2617,
+	"vin": 23848,
+	"vcap": 9985,
+	"vout": 23799,
+	"iin": 26,
+	"ichg": 0,
+	"temp": 25,
+	"index":0
+	}
+
+| Name | Description
+--- | ---
+chrg_sts | 	Charge Status Register
+moni_sts | Monitor Status Register
+vc1 | Voltage CAP1
+vc2 | Voltage CAP2
+vc3 | Voltage CAP3
+vc4 | Voltage CAP1
+vin | Input Voltage
+vcap | Total CAP Voltage
+vout | Output Voltage
+iin | Input Current in mA
+ichg | Charge Current in mA
+temp | Core Temperature in C
+index | upcounting message counter
+
+for more details please [see here](http://www.analog.com/media/en/technical-documentation/data-sheets/3350fc.pdf) 
 
 ### Messages from the UPS
 
