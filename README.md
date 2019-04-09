@@ -30,9 +30,13 @@ The UPS can deliver up to 10 Watts or 0,4 Ampere at 24 Volts.
 
 ## Wiring
 
+### ..with any 24 Volt Client Device
 
 ![Andino UPS - Wiring](wiring.png)
 
+### Wiring together with Andino X1 (OEE.Box)
+
+![Andino UPS - Wiring](oee.box-wiring.png)
 
 ## Backup times
 
